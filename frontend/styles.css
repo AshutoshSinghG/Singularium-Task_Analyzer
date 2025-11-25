@@ -1,6 +1,6 @@
 /**
- * Smart Task Analyzer - Premium Stylesheet
- * Modern, responsive design with glassmorphism and smooth animations
+ * Smart Task Analyzer - Black, Yellow, Green Theme
+ * Bold, vibrant design with electric accents
  */
 
 /* ========================================
@@ -14,36 +14,50 @@
 }
 
 :root {
-    /* Color Palette - Royal Purple Theme */
-    --primary-gradient: linear-gradient(135deg, #9333EA 0%, #C084FC 100%);
-    --secondary-gradient: linear-gradient(135deg, #A855F7 0%, #6D28D9 100%);
-    --success-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-    --warning-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    /* Black, Yellow, Green Color Palette */
+    --primary-gradient: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    --secondary-gradient: linear-gradient(135deg, #00FF87 0%, #00D96F 100%);
+    --success-gradient: linear-gradient(135deg, #00FF87 0%, #00D96F 100%);
+    --warning-gradient: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%);
     --danger-gradient: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    --accent-gradient: linear-gradient(135deg, #FFD700 0%, #00FF87 100%);
 
-    /* Solid colors */
-    --primary: #A855F7;
-    --secondary: #6D28D9;
-    --success: #43e97b;
-    --warning: #f5576c;
+    /* Solid Colors */
+    --primary: #FFD700;
+    /* Golden Yellow */
+    --secondary: #00FF87;
+    /* Neon Green */
+    --success: #00FF87;
+    /* Neon Green */
+    --warning: #FFA500;
+    /* Orange-Yellow */
     --danger: #ff6b6b;
 
-    /* Neutrals - New Dark Theme */
-    --bg-primary: #0B0B12;
-    --bg-secondary: #14141F;
-    --bg-tertiary: #1C1C2A;
-    --text-primary: #F1F5F9;
-    --text-secondary: #CBD5E1;
-    --text-muted: #94A3B8;
+    /* Black & White Theme */
+    --bg-primary: #000000;
+    /* Pure Black */
+    --bg-secondary: #0A0A0A;
+    /* Almost Black */
+    --bg-tertiary: #1A1A1A;
+    /* Dark Gray */
+    --text-primary: #FFFFFF;
+    /* Pure White */
+    --text-secondary: #E5E5E5;
+    /* Off White */
+    --text-muted: #9CA3AF;
+    /* Light Gray */
 
-    /* Glass effect */
-    --glass-bg: rgba(168, 85, 247, 0.05);
-    --glass-border: rgba(168, 85, 247, 0.15);
+    /* Glass effect with yellow tint */
+    --glass-bg: rgba(255, 215, 0, 0.05);
+    --glass-border: rgba(255, 215, 0, 0.2);
 
-    /* Priority colors */
-    --priority-high: #ff6b6b;
-    --priority-medium: #ffa500;
-    --priority-low: #43e97b;
+    /* Priority colors - Yellow/Green based */
+    --priority-high: #FFD700;
+    /* Yellow */
+    --priority-medium: #FFA500;
+    /* Orange */
+    --priority-low: #00FF87;
+    /* Green */
 
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -52,17 +66,18 @@
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
 
-    /* Border radius */
+    /* Border Radius */
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 16px;
     --radius-xl: 24px;
 
-    /* Shadows */
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
-    --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.4);
+    /* Shadows - Yellow/Green glows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 20px rgba(255, 215, 0, 0.6);
+    --shadow-glow-green: 0 0 20px rgba(0, 255, 135, 0.6);
 
     /* Transitions */
     --transition-fast: 0.2s ease;
@@ -74,8 +89,8 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background: var(--bg-primary);
     background-image:
-        radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 255, 135, 0.08) 0%, transparent 50%);
     color: var(--text-primary);
     line-height: 1.6;
     min-height: 100vh;
@@ -93,13 +108,14 @@ body {
    ======================================== */
 
 .header {
-    background: var(--glass-bg);
+    background: var(--bg-secondary);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--glass-border);
+    border-bottom: 2px solid var(--primary);
     padding: var(--spacing-lg) 0;
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
 }
 
 .header-content {
@@ -109,7 +125,7 @@ body {
 .logo {
     font-size: 2.5rem;
     font-weight: 800;
-    background: var(--primary-gradient);
+    background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -117,17 +133,19 @@ body {
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-sm);
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
 }
 
 .logo-icon {
     font-size: 3rem;
-    filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
 }
 
 .tagline {
-    color: var(--text-secondary);
+    color: var(--secondary);
     font-size: 1.1rem;
-    font-weight: 300;
+    font-weight: 400;
+    text-shadow: 0 0 10px rgba(0, 255, 135, 0.5);
 }
 
 /* ========================================
@@ -146,10 +164,11 @@ body {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: var(--spacing-xs);
-    background: var(--primary-gradient);
+    background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
 }
 
 .section-header p {
@@ -162,9 +181,9 @@ body {
    ======================================== */
 
 .card {
-    background: var(--glass-bg);
+    background: var(--bg-secondary);
     backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
+    border: 2px solid var(--glass-border);
     border-radius: var(--radius-lg);
     padding: var(--spacing-lg);
     margin-bottom: var(--spacing-lg);
@@ -173,7 +192,7 @@ body {
 }
 
 .card:hover {
-    border-color: rgba(102, 126, 234, 0.3);
+    border-color: var(--primary);
     box-shadow: var(--shadow-glow);
     transform: translateY(-2px);
 }
@@ -226,7 +245,7 @@ input[type="date"],
 select,
 textarea {
     background: var(--bg-tertiary);
-    border: 1px solid var(--glass-border);
+    border: 2px solid var(--glass-border);
     border-radius: var(--radius-sm);
     padding: var(--spacing-sm);
     color: var(--text-primary);
@@ -240,7 +259,8 @@ select:focus,
 textarea:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2), var(--shadow-glow);
+    background: var(--bg-secondary);
 }
 
 textarea {
@@ -269,24 +289,30 @@ textarea {
 
 .btn-primary {
     background: var(--primary-gradient);
-    color: white;
+    color: var(--bg-primary);
     box-shadow: var(--shadow-md);
+    font-weight: 700;
+    border: 2px solid transparent;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg), var(--shadow-glow);
+    filter: brightness(1.1);
 }
 
 .btn-secondary {
     background: var(--bg-tertiary);
-    color: var(--text-primary);
-    border: 1px solid var(--glass-border);
+    color: var(--secondary);
+    border: 2px solid var(--secondary);
+    font-weight: 600;
 }
 
 .btn-secondary:hover {
-    background: var(--bg-secondary);
-    border-color: var(--primary);
+    background: var(--secondary);
+    color: var(--bg-primary);
+    box-shadow: var(--shadow-glow-green);
+    transform: translateY(-2px);
 }
 
 .btn-danger {
@@ -331,7 +357,7 @@ textarea {
 
 .task-item {
     background: var(--bg-tertiary);
-    border: 1px solid var(--glass-border);
+    border: 2px solid var(--glass-border);
     border-radius: var(--radius-sm);
     padding: var(--spacing-sm);
     margin-bottom: var(--spacing-sm);
@@ -344,6 +370,7 @@ textarea {
 .task-item:hover {
     border-color: var(--primary);
     transform: translateX(4px);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
 }
 
 .task-item-info {
@@ -423,7 +450,7 @@ textarea {
 
 .view-btn {
     background: var(--bg-tertiary);
-    border: 1px solid var(--glass-border);
+    border: 2px solid var(--glass-border);
     border-radius: var(--radius-sm);
     padding: var(--spacing-sm) var(--spacing-md);
     color: var(--text-secondary);
@@ -435,13 +462,17 @@ textarea {
 
 .view-btn:hover {
     background: var(--bg-secondary);
-    color: var(--text-primary);
+    color: var(--primary);
+    border-color: var(--primary);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
 .view-btn.active {
     background: var(--primary-gradient);
-    color: white;
+    color: var(--bg-primary);
     border-color: transparent;
+    font-weight: 700;
+    box-shadow: var(--shadow-glow);
 }
 
 /* ========================================
@@ -491,9 +522,9 @@ textarea {
 }
 
 .warning-item.info {
-    background: rgba(102, 126, 234, 0.1);
+    background: rgba(255, 215, 0, 0.1);
     border-color: var(--primary);
-    color: #b8c5ff;
+    color: #ffd966;
 }
 
 /* ========================================
@@ -543,27 +574,31 @@ textarea {
 }
 
 .priority-high {
-    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
-    color: white;
+    background: linear-gradient(135deg, #FFD700, #FF8C00);
+    color: var(--bg-primary);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
 .priority-medium {
-    background: linear-gradient(135deg, #ffa500, #ff8c00);
-    color: white;
+    background: linear-gradient(135deg, #FFA500, #FF7F00);
+    color: var(--bg-primary);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
 }
 
 .priority-low {
-    background: linear-gradient(135deg, #43e97b, #38f9d7);
-    color: #1a1a2e;
+    background: linear-gradient(135deg, #00FF87, #00D96F);
+    color: var(--bg-primary);
+    box-shadow: 0 0 10px rgba(0, 255, 135, 0.5);
 }
 
 .score-display {
     font-size: 1.5rem;
     font-weight: 700;
-    background: var(--primary-gradient);
+    background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
 }
 
 /* ========================================
