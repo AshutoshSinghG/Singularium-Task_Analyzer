@@ -14,56 +14,56 @@
 }
 
 :root {
-    /* Color Palette - Premium gradients */
-    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    /* Color Palette - Royal Purple Theme */
+    --primary-gradient: linear-gradient(135deg, #9333EA 0%, #C084FC 100%);
+    --secondary-gradient: linear-gradient(135deg, #A855F7 0%, #6D28D9 100%);
     --success-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
     --warning-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
     --danger-gradient: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
-    
+
     /* Solid colors */
-    --primary: #667eea;
-    --secondary: #764ba2;
+    --primary: #A855F7;
+    --secondary: #6D28D9;
     --success: #43e97b;
     --warning: #f5576c;
     --danger: #ff6b6b;
-    
-    /* Neutrals with purple tint */
-    --bg-primary: #0f0f1e;
-    --bg-secondary: #1a1a2e;
-    --bg-tertiary: #252541;
-    --text-primary: #ffffff;
-    --text-secondary: #b8b8d1;
-    --text-muted: #7a7a9d;
-    
+
+    /* Neutrals - New Dark Theme */
+    --bg-primary: #0B0B12;
+    --bg-secondary: #14141F;
+    --bg-tertiary: #1C1C2A;
+    --text-primary: #F1F5F9;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+
     /* Glass effect */
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    
+    --glass-bg: rgba(168, 85, 247, 0.05);
+    --glass-border: rgba(168, 85, 247, 0.15);
+
     /* Priority colors */
     --priority-high: #ff6b6b;
     --priority-medium: #ffa500;
     --priority-low: #43e97b;
-    
+
     /* Spacing */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 1.5rem;
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
-    
+
     /* Border radius */
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 16px;
     --radius-xl: 24px;
-    
+
     /* Shadows */
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
     --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
     --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.4);
-    
+
     /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
@@ -73,7 +73,7 @@
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background: var(--bg-primary);
-    background-image: 
+    background-image:
         radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
     color: var(--text-primary);
@@ -464,8 +464,13 @@ textarea {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* ========================================
@@ -770,31 +775,31 @@ textarea {
     .logo {
         font-size: 1.8rem;
     }
-    
+
     .logo-icon {
         font-size: 2rem;
     }
-    
+
     .form-row {
         grid-template-columns: 1fr;
     }
-    
+
     .analysis-buttons {
         grid-template-columns: 1fr;
     }
-    
+
     .results-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .matrix-content {
         grid-template-columns: 1fr;
     }
-    
+
     .view-controls {
         flex-direction: column;
     }
-    
+
     .view-btn {
         width: 100%;
     }
@@ -831,6 +836,7 @@ textarea {
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);

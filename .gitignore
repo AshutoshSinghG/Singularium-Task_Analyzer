@@ -1,0 +1,67 @@
+# Python
+*.py[cod]
+*$py.class
+*.so
+.Python
+__pycache__/
+*.pyc
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+/media
+/staticfiles
+/static
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.coverage
+.pytest_cache/
+htmlcov/
+.tox/
+
+# Environment variables
+.env
+.env.local
+*.env
+
+# Build files
+*.egg-info/
+dist/
+build/
+
+# Migrations (optional - uncomment if you want to ignore)
+# */migrations/*.py
+# !*/migrations/__init__.py
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Logs
+*.log
+logs/
+
+# Node (if you add any JS build tools later)
+node_modules/
+npm-debug.log
+yarn-error.log
