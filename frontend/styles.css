@@ -1,6 +1,6 @@
-/* ========================================
+/*
    RESET & BASE STYLES
-   ======================================== */
+     */
 
 * {
     margin: 0;
@@ -75,9 +75,9 @@ body {
     padding: 0 var(--spacing-md);
 }
 
-/* ========================================
-   HEADER
-   ======================================== */
+/*
+      HEADER
+     */
 
 .header {
     background: var(--bg-secondary);
@@ -115,9 +115,9 @@ body {
     font-weight: 400;
 }
 
-/* ========================================
-   MAIN CONTENT
-   ======================================== */
+/*
+      MAIN CONTENT
+     */
 
 .main-content {
     padding: var(--spacing-xl) 0;
@@ -142,9 +142,9 @@ body {
     font-size: 1.1rem;
 }
 
-/* ========================================
-   CARD COMPONENT
-   ======================================== */
+/*
+      CARD COMPONENT
+     */
 
 .card {
     background: var(--bg-secondary);
@@ -174,9 +174,9 @@ body {
     margin-bottom: var(--spacing-md);
 }
 
-/* ========================================
-   FORMS
-   ======================================== */
+/*
+      FORMS
+     */
 
 .task-form {
     display: flex;
@@ -231,9 +231,9 @@ textarea {
     font-family: 'Courier New', monospace;
 }
 
-/* ========================================
-   BUTTONS
-   ======================================== */
+/*
+      BUTTONS
+     */
 
 .btn {
     padding: var(--spacing-sm) var(--spacing-lg);
@@ -304,9 +304,9 @@ textarea {
     cursor: not-allowed;
 }
 
-/* ========================================
-   CURRENT TASKS LIST
-   ======================================== */
+/*
+      CURRENT TASKS LIST
+     */
 
 .current-tasks-list {
     max-height: 400px;
@@ -367,9 +367,9 @@ textarea {
     font-style: italic;
 }
 
-/* ========================================
-   ANALYSIS CONTROLS
-   ======================================== */
+/*
+      ANALYSIS CONTROLS
+     */
 
 .strategy-selector {
     display: flex;
@@ -395,9 +395,9 @@ textarea {
     gap: var(--spacing-md);
 }
 
-/* ========================================
-   VIEW CONTROLS
-   ======================================== */
+/*
+      VIEW CONTROLS
+     */
 
 .view-controls {
     display: flex;
@@ -430,9 +430,9 @@ textarea {
     font-weight: 700;
 }
 
-/* ========================================
-   LOADING INDICATOR
-   ======================================== */
+/*
+      LOADING INDICATOR
+     */
 
 .loading-indicator {
     text-align: center;
@@ -459,9 +459,9 @@ textarea {
     }
 }
 
-/* ========================================
-   WARNINGS & ALERTS
-   ======================================== */
+/*
+      WARNINGS & ALERTS
+     */
 
 .warnings-container {
     margin-bottom: var(--spacing-lg);
@@ -482,9 +482,9 @@ textarea {
     color: #ffa855;
 }
 
-/* ========================================
-   RESULTS - TABLE VIEW
-   ======================================== */
+/*
+      RESULTS - TABLE VIEW
+     */
 
 .results-table {
     width: 100%;
@@ -552,9 +552,9 @@ textarea {
     background-clip: text;
 }
 
-/* ========================================
-   RESULTS - CARD VIEW
-   ======================================== */
+/*
+      RESULTS - CARD VIEW
+     */
 
 .results-grid {
     display: grid;
@@ -628,9 +628,9 @@ textarea {
     font-family: 'Courier New', monospace;
 }
 
-/* ========================================
-   DEPENDENCY GRAPH
-   ======================================== */
+/*
+      DEPENDENCY GRAPH
+     */
 
 .graph-container {
     background: var(--bg-secondary);
@@ -646,9 +646,9 @@ textarea {
     margin: 0 auto;
 }
 
-/* ========================================
-   EISENHOWER MATRIX
-   ======================================== */
+/*
+      EISENHOWER MATRIX
+     */
 
 .matrix-container {
     background: var(--bg-secondary);
@@ -740,9 +740,9 @@ textarea {
     font-size: 0.9rem;
 }
 
-/* ========================================
-   FOOTER
-   ======================================== */
+/*
+      FOOTER
+     */
 
 .footer {
     background: var(--glass-bg);
@@ -753,9 +753,9 @@ textarea {
     margin-top: var(--spacing-xl);
 }
 
-/* ========================================
-   RESPONSIVE DESIGN
-   ======================================== */
+/*
+      RESPONSIVE DESIGN
+     */
 
 @media (max-width: 768px) {
     .logo {
@@ -791,9 +791,9 @@ textarea {
     }
 }
 
-/* ========================================
-   SCROLLBAR STYLING
-   ======================================== */
+/*
+      SCROLLBAR STYLING
+     */
 
 ::-webkit-scrollbar {
     width: 8px;
