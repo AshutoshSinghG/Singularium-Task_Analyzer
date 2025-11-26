@@ -9,37 +9,37 @@
 }
 
 :root {
-    /* Black, Yellow, Green Color Palette */
-    --primary-gradient: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-    --secondary-gradient: linear-gradient(135deg, #00FF87 0%, #00D96F 100%);
-    --success-gradient: linear-gradient(135deg, #00FF87 0%, #00D96F 100%);
-    --warning-gradient: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%);
-    --danger-gradient: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
-    --accent-gradient: linear-gradient(135deg, #FFD700 0%, #00FF87 100%);
+    /* Simple & Clean Orange/Black/White Palette */
+    --primary-gradient: linear-gradient(135deg, #FF8C00 0%, #FF6B1A 100%);
+    --secondary-gradient: linear-gradient(135deg, #666666 0%, #888888 100%);
+    --success-gradient: linear-gradient(135deg, #4CAF50 0%, #45A049 100%);
+    --warning-gradient: linear-gradient(135deg, #FF8C00 0%, #FF6B1A 100%);
+    --danger-gradient: linear-gradient(135deg, #E74C3C 0%, #C0392B 100%);
+    --accent-gradient: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
 
     /* Solid Colors */
-    --primary: #FFD700;
-    --secondary: #00FF87;
-    --success: #00FF87;
-    --warning: #FFA500;
-    --danger: #ff6b6b;
+    --primary: #FF8C00;
+    --secondary: #888888;
+    --success: #4CAF50;
+    --warning: #FF8C00;
+    --danger: #E74C3C;
 
-    /* Black & White Theme */
-    --bg-primary: #000000;
-    --bg-secondary: #0A0A0A;
-    --bg-tertiary: #1A1A1A;
+    /* Clean Black & White Theme */
+    --bg-primary: #0D0D0D;
+    --bg-secondary: #1A1A1A;
+    --bg-tertiary: #242424;
     --text-primary: #FFFFFF;
-    --text-secondary: #E5E5E5;
-    --text-muted: #9CA3AF;
+    --text-secondary: #D1D1D1;
+    --text-muted: #888888;
 
-    /* Glass effect */
-    --glass-bg: rgba(255, 215, 0, 0.05);
-    --glass-border: rgba(255, 215, 0, 0.2);
+    /* Subtle Glass Effect */
+    --glass-bg: rgba(255, 140, 0, 0.03);
+    --glass-border: rgba(255, 140, 0, 0.15);
 
-    /* Priority colors */
-    --priority-high: #FFD700;
+    /* Priority Colors */
+    --priority-high: #FF8C00;
     --priority-medium: #FFA500;
-    --priority-low: #00FF87;
+    --priority-low: #888888;
 
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -263,7 +263,7 @@ textarea {
 
 .btn-secondary {
     background: var(--bg-tertiary);
-    color: var(--secondary);
+    color: var(--text-secondary);
     border: 2px solid var(--secondary);
     font-weight: 600;
 }
@@ -468,7 +468,7 @@ textarea {
 }
 
 .warning-item {
-    background: rgba(255, 107, 107, 0.1);
+    background: rgba(231, 76, 60, 0.1);
     border: 2px solid var(--danger);
     border-radius: var(--radius-sm);
     padding: var(--spacing-md);
@@ -477,9 +477,9 @@ textarea {
 }
 
 .warning-item.info {
-    background: rgba(255, 215, 0, 0.1);
+    background: rgba(255, 140, 0, 0.1);
     border-color: var(--primary);
-    color: #ffd966;
+    color: #ffa855;
 }
 
 /* ========================================
@@ -529,18 +529,18 @@ textarea {
 }
 
 .priority-high {
-    background: linear-gradient(135deg, #FFD700, #FF8C00);
+    background: linear-gradient(135deg, #FF8C00, #FF6B1A);
     color: var(--bg-primary);
 }
 
 .priority-medium {
-    background: linear-gradient(135deg, #FFA500, #FF7F00);
+    background: linear-gradient(135deg, #FFA500, #FF8C00);
     color: var(--bg-primary);
 }
 
 .priority-low {
-    background: linear-gradient(135deg, #00FF87, #00D96F);
-    color: var(--bg-primary);
+    background: linear-gradient(135deg, #888888, #666666);
+    color: var(--text-primary);
 }
 
 .score-display {
@@ -806,49 +806,9 @@ textarea {
 
 ::-webkit-scrollbar-thumb {
     background: var(--primary);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary);
-}
-
-/* ========================================
-   ANIMATIONS
-   ======================================== */
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.results-section {
-    animation: fadeIn 0.5s ease;
-}
-
-/* ========================================
-   UTILITY CLASSES
-   ======================================== */
-
-.text-center {
-    text-align: center;
-}
-
-.mt-1 {
-    margin-top: var(--spacing-sm);
-}
-
-.mb-1 {
-    margin-bottom: var(--spacing-sm);
-}
-
-.hidden {
-    display: none !important;
+    background: var(--warning);
 }
