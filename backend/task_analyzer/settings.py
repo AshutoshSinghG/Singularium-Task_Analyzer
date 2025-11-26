@@ -1,7 +1,3 @@
-"""
-Django settings for task_analyzer project.
-Production-quality configuration for Smart Task Analyzer.
-"""
 
 from pathlib import Path
 

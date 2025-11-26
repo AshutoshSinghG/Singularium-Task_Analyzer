@@ -45,13 +45,6 @@ STRATEGY_WEIGHTS = {
     }
 }
 
-# Configurable holiday list for date intelligence
-HOLIDAYS = [
-    # Add custom holidays as needed (format: 'YYYY-MM-DD')
-    # Example: '2025-12-25', '2025-01-01'
-]
-
-
 # ================================
 # CORE SCORING FUNCTIONS
 # ================================

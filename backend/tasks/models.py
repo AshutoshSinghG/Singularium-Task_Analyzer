@@ -1,5 +1,4 @@
 """
-Task Model for Smart Task Analyzer
 Stores task information with fields for priority calculation.
 """
 from django.db import models
