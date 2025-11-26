@@ -20,36 +20,6 @@ from .utils import (
 
 
 class AnalyzeTasksView(APIView):
-    """
-    POST /api/tasks/analyze/
-    
-    Analyzes a list of tasks and returns them sorted by priority score.
-    
-    Request Body:
-        {
-            "tasks": [
-                {
-                    "title": "Fix login bug",
-                    "due_date": "2025-11-30",
-                    "estimated_hours": 3,
-                    "importance": 8,
-                    "dependencies": []
-                },
-                ...
-            ],
-            "strategy": "SMART_BALANCE"  // Optional, defaults to SMART_BALANCE
-        }
-    
-    Response:
-        {
-            "tasks": [...],  // Sorted by priority score (highest first)
-            "warnings": [...],
-            "strategy": "SMART_BALANCE",
-            "has_circular_dependencies": false,
-            "circular_dependency_details": []
-        }
-    """
-    
     def post(self, request):
         # Validate request data
         serializer = TaskAnalysisSerializer(data=request.data)
@@ -138,33 +108,6 @@ class AnalyzeTasksView(APIView):
 
 
 class SuggestTasksView(APIView):
-    """
-    GET/POST /api/tasks/suggest/
-    
-    Returns top 3 highest priority tasks with detailed explanations.
-    Can accept tasks via POST body or use pre-analyzed tasks.
-    
-    Request Body (POST):
-        {
-            "tasks": [...],
-            "strategy": "SMART_BALANCE"
-        }
-    
-    Response:
-        {
-            "top_tasks": [
-                {
-                    ...task data...,
-                    "priority_score": 8.5,
-                    "score_explanation": "...",
-                    "recommendation": "..."
-                }
-            ],
-            "strategy": "SMART_BALANCE",
-            "total_tasks_analyzed": 10,
-            "warnings": [...]
-        }
-    """
     
     def post(self, request):
         # Use analyze endpoint logic
