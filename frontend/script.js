@@ -71,14 +71,14 @@ function handleAddTask(e) {
     // Reset form
     e.target.reset();
 
-    showToast('✅ Task added successfully!', 'success');
+    showToast('Task added successfully!', 'success');
 }
 
 function handleLoadBulkTasks() {
     const bulkInput = document.getElementById('bulkTasksInput').value.trim();
 
     if (!bulkInput) {
-        showToast('⚠️ Please paste JSON data', 'warning');
+        showToast('Please paste JSON data', 'warning');
         return;
     }
 
@@ -112,7 +112,7 @@ function handleLoadBulkTasks() {
 
 function handleClearAll() {
     if (tasks.length === 0) {
-        showToast('ℹ️ No tasks to clear', 'info');
+        showToast('No tasks to clear', 'info');
         return;
     }
 
@@ -163,7 +163,7 @@ function validateTask(task) {
     }
 
     if (errors.length > 0) {
-        showToast(`❌ Validation errors:\n${errors.join('\n')}`, 'error');
+        showToast(`Validation errors:\n${errors.join('\n')}`, 'error');
         return false;
     }
 
@@ -186,7 +186,7 @@ function parseDependencies(input) {
 
 async function handleAnalyzeTasks() {
     if (tasks.length === 0) {
-        showToast('⚠️ Please add some tasks first', 'warning');
+        showToast('Please add some tasks first', 'warning');
         return;
     }
 
@@ -224,7 +224,7 @@ async function handleAnalyzeTasks() {
         if (data.has_circular_dependencies) {
             showWarnings([{
                 type: 'circular_dependency',
-                message: '⚠️ Circular dependencies detected!',
+                message: 'Circular dependencies detected!',
                 details: data.circular_dependency_details
             }]);
         }
@@ -242,7 +242,7 @@ async function handleAnalyzeTasks() {
 
 async function handleSuggestTasks() {
     if (tasks.length === 0) {
-        showToast('⚠️ Please add some tasks first', 'warning');
+        showToast('Please add some tasks first', 'warning');
         return;
     }
 
@@ -289,8 +289,6 @@ async function handleSuggestTasks() {
 
 
 // UI UPDATES
-
-
 function updateCurrentTasksList() {
     const container = document.getElementById('currentTasksList');
 
@@ -367,8 +365,6 @@ function switchView(view) {
 
 
 // RENDER VIEWS
-
-
 function renderTableView() {
     const container = document.getElementById('resultsContainer');
 
@@ -575,8 +571,6 @@ function renderEisenhowerMatrix() {
 
 
 // HELPER FUNCTIONS
-
-
 function drawArrow(ctx, fromX, fromY, toX, toY) {
     const headLength = 10;
     const angle = Math.atan2(toY - fromY, toX - fromX);
@@ -701,8 +695,6 @@ function showToast(message, type = 'info') {
 
 
 // LOCAL STORAGE
-
-
 function saveTasksToStorage() {
     try {
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks));
