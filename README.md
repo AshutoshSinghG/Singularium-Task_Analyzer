@@ -1608,4 +1608,4 @@ These improvements would transform the project from a sophisticated demo into a 
 
 ---
 ## Ashutosh Kumar - Full Stack Developer
-(Linkedin: @ashutoshkumer-me)
+(Linkedin: @ashutoshkumar-me)
