@@ -1,4 +1,4 @@
-# 🎯 Smart Task Analyzer
+# Smart Task Analyzer
 
 **AI-Powered Priority Intelligence System**
 
@@ -6,7 +6,7 @@ An advanced Django-based task prioritization system that uses a sophisticated mu
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Features](#-features)
 - [Technology Stack](#-technology-stack)
@@ -15,11 +15,11 @@ An advanced Django-based task prioritization system that uses a sophisticated mu
 - [API Documentation](#-api-documentation)
 - [Algorithm Explanation](#-algorithm-explanation)
 - [Sorting Strategies](#-sorting-strategies)
-- [Time Breakdown](#️-time-breakdown)
+- [Time Breakdown](#-time-breakdown)
 - [Bonus Challenges Attempted](#-bonus-challenges-attempted)
 - [Bonus Features](#-bonus-features)
 - [Design Decisions & Trade-offs](#-design-decisions--trade-offs)
-- [Edge Case Handling](#️-edge-case-handling)
+- [Edge Case Handling](#-edge-case-handling)
 - [Testing](#-testing)
 - [Future Improvements](#-future-improvements)
 - [License](#-license)
@@ -54,7 +54,7 @@ An advanced Django-based task prioritization system that uses a sophisticated mu
 
 ---
 
-## 🛠 Technology Stack
+## Technology Stack
 
 ### Backend
 - **Python**: 3.8+
@@ -75,7 +75,7 @@ An advanced Django-based task prioritization system that uses a sophisticated mu
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 task-analyzer/
@@ -106,7 +106,7 @@ task-analyzer/
 
 ---
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 ### Prerequisites
 - Python 3.8 or higher
@@ -172,7 +172,7 @@ The API will be available at `http://127.0.0.1:8000/api/`
 
 ---
 
-## 📡 API Documentation
+## API Documentation
 
 ### Base URL
 ```
@@ -258,7 +258,7 @@ Returns the top 3 highest priority tasks with recommendations.
   "top_tasks": [
     {
       ...task data...,
-      "recommendation": "🎯 TOP PRIORITY! This task has the highest score (8.25/10). Start with this task today."
+      "recommendation": "TOP PRIORITY! This task has the highest score (8.25/10). Start with this task today."
     }
   ],
   "strategy": "SMART_BALANCE",
@@ -282,7 +282,7 @@ Returns the top 3 highest priority tasks with recommendations.
 
 ---
 
-## 🧠 Algorithm Explanation
+## Algorithm Explanation
 
 ### Overview
 
@@ -444,7 +444,7 @@ final_score = (7.1 × 0.25) + (8.0 × 0.25) + (6.75 × 0.25) + (8.0 × 0.25)
 
 ---
 
-## 🎯 Sorting Strategies
+## Sorting Strategies
 
 ### Smart Balance (Recommended)
 **Best for:** General task management, balanced workflow
@@ -468,7 +468,7 @@ Heavily weights urgency (55%), focusing on imminent due dates. Ideal for high-pr
 
 ---
 
-## ⏱️ Time Breakdown
+## Time Breakdown
 
 **Total Development Time: ~12-14 hours**
 
@@ -516,7 +516,7 @@ This section provides an honest breakdown of approximate time spent on each comp
 
 ---
 
-## 🎁 Bonus Challenges Attempted
+## Bonus Challenges Attempted
 
 The assignment included several bonus challenges. Here's what was implemented:
 
@@ -573,8 +573,8 @@ The assignment included several bonus challenges. Here's what was implemented:
 **Code Location:** `backend/tasks/scoring.py` → `calculate_urgency_score()` function
 
 **Current Status:**
-- Weekend/holiday detection: ✅ Implemented
-- Urgency adjustment: ⚠️ Infrastructure ready but not active (can be enabled with 1-line config change)
+- Weekend/holiday detection: Implemented
+- Urgency adjustment: Infrastructure ready but not active (can be enabled with 1-line config change)
 
 **Rationale:**
 - Keeping urgency adjustment inactive by default prevents unexpected behavior
@@ -665,7 +665,7 @@ These bonus features were considered but not implemented due to time/scope:
 
 ---
 
-## 🎁 Bonus Features
+## Bonus Features
 
 ### 1. Dependency Graph Visualization
 
@@ -722,7 +722,7 @@ HOLIDAYS = [
 
 ---
 
-## 🎨 Design Decisions & Trade-offs
+## Design Decisions & Trade-offs
 
 This section documents the key architectural, technical, and algorithmic decisions made during development, along with their trade-offs and justifications.
 
@@ -1046,7 +1046,7 @@ These design decisions reflect a balance between **assignment requirements** (ad
 
 ---
 
-## ⚠️ Edge Case Handling
+## Edge Case Handling
 
 ### Missing Required Fields
 **Detection:** Validation in serializers and utils
@@ -1084,7 +1084,7 @@ These design decisions reflect a balance between **assignment requirements** (ad
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Running Tests
 
@@ -1141,13 +1141,13 @@ Destroying test database for alias 'default'...
 
 ---
 
-## 🚀 Future Improvements
+## Future Improvements
 
 This section outlines enhancements that would be implemented with additional time, organized by category with priority and complexity estimates.
 
 ### Algorithm Enhancements
 
-#### 1. **Machine Learning-Based Scoring** ⭐ High Priority
+#### 1. **Machine Learning-Based Scoring** High Priority
 
 **Description:** Train a model on historical task completion data to learn personalized priority patterns.
 
@@ -1229,7 +1229,7 @@ This section outlines enhancements that would be implemented with additional tim
 
 ### User Interface Enhancements
 
-#### 5. **Drag-and-Drop Manual Reordering** ⭐ High Priority
+#### 5. **Drag-and-Drop Manual Reordering** High Priority
 
 **Description:** Allow users to manually reorder tasks while preserving algorithmic suggestions.
 
@@ -1322,7 +1322,7 @@ This section outlines enhancements that would be implemented with additional tim
 
 ### Data & Analytics
 
-#### 10. **Task History & Analytics Dashboard** ⭐ High Priority
+#### 10. **Task History & Analytics Dashboard** High Priority
 
 **Description:** Track completed tasks and show productivity analytics.
 
@@ -1607,32 +1607,5 @@ If given **1 additional month**, I would add:
 These improvements would transform the project from a sophisticated demo into a production-ready task management platform while maintaining the core algorithmic innovation that makes it unique.
 
 ---
-
-## 📄 License
-
-This project is provided as-is for educational and demonstration purposes.
-
----
-
-## 👨‍💻 Author
-
-Built as an advanced Django assignment demonstrating:
-- Production-quality code architecture
-- Sophisticated algorithms
-- Comprehensive testing
-- Premium user experience
-- Professional documentation
-
-**For questions or improvements, please open an issue or submit a pull request.**
-
----
-
-## 🙏 Acknowledgments
-
-- Django and DRF communities for excellent frameworks
-- Time management research (Eisenhower Matrix, Getting Things Done)
-- Modern web design inspiration from Dribbble and Behance
-
----
-
-**⭐ If you found this project helpful, please star the repository!**
+## Ashutosh Kumar - Full Stack Developer
+(Linkedin: @ashutoshkumer-me)
