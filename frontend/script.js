@@ -1,27 +1,17 @@
-/**
- * Smart Task Analyzer - Frontend JavaScript
- * Handles task management, API communication, and visualizations
- */
 
-// ========================================
+
 // CONFIGURATION
-// ========================================
-
 const API_BASE_URL = 'http://127.0.0.1:8000/api';
 const LOCAL_STORAGE_KEY = 'smart_task_analyzer_tasks';
 
-// ========================================
-// STATE MANAGEMENT
-// ========================================
 
+// STATE MANAGEMENT
 let tasks = [];
 let analyzedTasks = [];
 let currentView = 'table';
 
-// ========================================
-// INITIALIZATION
-// ========================================
 
+// INITIALIZATION
 document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
     attachEventListeners();
@@ -30,25 +20,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initializeApp() {
     updateTaskCount();
-    console.log('✅ Smart Task Analyzer initialized');
+    console.log('Smart Task Analyzer initialized');
 }
 
-// ========================================
-// EVENT LISTENERS
-// ========================================
 
+// EVENT LISTENERS
 function attachEventListeners() {
     // Form submissions
     document.getElementById('taskForm').addEventListener('submit', handleAddTask);
     document.getElementById('loadBulkBtn').addEventListener('click', handleLoadBulkTasks);
-    
+
     // Analysis buttons
     document.getElementById('analyzeBtn').addEventListener('click', handleAnalyzeTasks);
     document.getElementById('suggestBtn').addEventListener('click', handleSuggestTasks);
-    
+
     // Utility buttons
     document.getElementById('clearAllBtn').addEventListener('click', handleClearAll);
-    
+
     // View switches
     document.getElementById('tableViewBtn').addEventListener('click', () => switchView('table'));
     document.getElementById('cardViewBtn').addEventListener('click', () => switchView('card'));
@@ -56,13 +44,11 @@ function attachEventListeners() {
     document.getElementById('matrixViewBtn').addEventListener('click', () => switchView('matrix'));
 }
 
-// ========================================
-// TASK MANAGEMENT
-// ========================================
 
+// TASK MANAGEMENT
 function handleAddTask(e) {
     e.preventDefault();
-    
+
     const task = {
         id: tasks.length + 1,
         title: document.getElementById('taskTitle').value,
@@ -71,38 +57,38 @@ function handleAddTask(e) {
         importance: parseInt(document.getElementById('taskImportance').value),
         dependencies: parseDependencies(document.getElementById('taskDependencies').value)
     };
-    
+
     // Validate task
     if (!validateTask(task)) {
         return;
     }
-    
+
     tasks.push(task);
     saveTasksToStorage();
     updateCurrentTasksList();
     updateTaskCount();
-    
+
     // Reset form
     e.target.reset();
-    
+
     showToast('✅ Task added successfully!', 'success');
 }
 
 function handleLoadBulkTasks() {
     const bulkInput = document.getElementById('bulkTasksInput').value.trim();
-    
+
     if (!bulkInput) {
         showToast('⚠️ Please paste JSON data', 'warning');
         return;
     }
-    
+
     try {
         const loadedTasks = JSON.parse(bulkInput);
-        
+
         if (!Array.isArray(loadedTasks)) {
             throw new Error('Input must be an array of tasks');
         }
-        
+
         // Add IDs to loaded tasks
         const startId = tasks.length + 1;
         loadedTasks.forEach((task, index) => {
@@ -110,15 +96,15 @@ function handleLoadBulkTasks() {
                 task.id = startId + index;
             }
         });
-        
+
         tasks.push(...loadedTasks);
         saveTasksToStorage();
         updateCurrentTasksList();
         updateTaskCount();
-        
+
         document.getElementById('bulkTasksInput').value = '';
         showToast(`✅ Loaded ${loadedTasks.length} tasks!`, 'success');
-        
+
     } catch (error) {
         showToast(`❌ Invalid JSON: ${error.message}`, 'error');
     }
@@ -129,7 +115,7 @@ function handleClearAll() {
         showToast('ℹ️ No tasks to clear', 'info');
         return;
     }
-    
+
     if (confirm(`Are you sure you want to clear all ${tasks.length} tasks?`)) {
         tasks = [];
         analyzedTasks = [];
@@ -153,34 +139,34 @@ function removeTask(index) {
     showToast('🗑️ Task removed', 'info');
 }
 
-// ========================================
+
 // VALIDATION
-// ========================================
+
 
 function validateTask(task) {
     const errors = [];
-    
+
     if (!task.title || task.title.trim().length === 0) {
         errors.push('Title is required');
     }
-    
+
     if (!task.due_date) {
         errors.push('Due date is required');
     }
-    
+
     if (!task.estimated_hours || task.estimated_hours <= 0) {
         errors.push('Estimated hours must be greater than 0');
     }
-    
+
     if (!task.importance || task.importance < 1 || task.importance > 10) {
         errors.push('Importance must be between 1 and 10');
     }
-    
+
     if (errors.length > 0) {
         showToast(`❌ Validation errors:\n${errors.join('\n')}`, 'error');
         return false;
     }
-    
+
     return true;
 }
 
@@ -188,27 +174,27 @@ function parseDependencies(input) {
     if (!input || input.trim() === '') {
         return [];
     }
-    
+
     return input.split(',')
         .map(id => parseInt(id.trim()))
         .filter(id => !isNaN(id));
 }
 
-// ========================================
+
 // API COMMUNICATION
-// ========================================
+
 
 async function handleAnalyzeTasks() {
     if (tasks.length === 0) {
         showToast('⚠️ Please add some tasks first', 'warning');
         return;
     }
-    
+
     const strategy = document.getElementById('strategySelect').value;
-    
+
     showLoading();
     hideWarnings();
-    
+
     try {
         const response = await fetch(`${API_BASE_URL}/tasks/analyze/`, {
             method: 'POST',
@@ -220,20 +206,20 @@ async function handleAnalyzeTasks() {
                 strategy: strategy
             })
         });
-        
+
         const data = await response.json();
-        
+
         if (!response.ok) {
             throw new Error(data.error || 'Analysis failed');
         }
-        
+
         analyzedTasks = data.tasks;
-        
+
         // Show warnings if any
         if (data.warnings && data.warnings.length > 0) {
             showWarnings(data.warnings);
         }
-        
+
         // Show circular dependency warning
         if (data.has_circular_dependencies) {
             showWarnings([{
@@ -242,11 +228,11 @@ async function handleAnalyzeTasks() {
                 details: data.circular_dependency_details
             }]);
         }
-        
+
         hideLoading();
         displayResults();
         showToast('✅ Analysis complete!', 'success');
-        
+
     } catch (error) {
         hideLoading();
         showToast(`❌ Analysis error: ${error.message}`, 'error');
@@ -259,12 +245,12 @@ async function handleSuggestTasks() {
         showToast('⚠️ Please add some tasks first', 'warning');
         return;
     }
-    
+
     const strategy = document.getElementById('strategySelect').value;
-    
+
     showLoading();
     hideWarnings();
-    
+
     try {
         const response = await fetch(`${API_BASE_URL}/tasks/suggest/`, {
             method: 'POST',
@@ -276,24 +262,24 @@ async function handleSuggestTasks() {
                 strategy: strategy
             })
         });
-        
+
         const data = await response.json();
-        
+
         if (!response.ok) {
             throw new Error(data.error || 'Suggestion failed');
         }
-        
+
         analyzedTasks = data.top_tasks;
-        
+
         // Show warnings
         if (data.warnings && data.warnings.length > 0) {
             showWarnings(data.warnings);
         }
-        
+
         hideLoading();
         displaySuggestions();
         showToast('✅ Top suggestions ready!', 'success');
-        
+
     } catch (error) {
         hideLoading();
         showToast(`❌ Suggestion error: ${error.message}`, 'error');
@@ -301,18 +287,18 @@ async function handleSuggestTasks() {
     }
 }
 
-// ========================================
+
 // UI UPDATES
-// ========================================
+
 
 function updateCurrentTasksList() {
     const container = document.getElementById('currentTasksList');
-    
+
     if (tasks.length === 0) {
         container.innerHTML = '<p class="empty-state">No tasks added yet. Add tasks using the form above.</p>';
         return;
     }
-    
+
     container.innerHTML = tasks.map((task, index) => `
         <div class="task-item">
             <div class="task-item-info">
@@ -350,15 +336,15 @@ function hideResults() {
 
 function switchView(view) {
     currentView = view;
-    
+
     // Update button states
     document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
-    
+
     // Hide all views
     document.getElementById('resultsContainer').innerHTML = '';
     document.getElementById('graphContainer').style.display = 'none';
     document.getElementById('matrixContainer').style.display = 'none';
-    
+
     switch (view) {
         case 'table':
             document.getElementById('tableViewBtn').classList.add('active');
@@ -379,18 +365,18 @@ function switchView(view) {
     }
 }
 
-// ========================================
+
 // RENDER VIEWS
-// ========================================
+
 
 function renderTableView() {
     const container = document.getElementById('resultsContainer');
-    
+
     if (analyzedTasks.length === 0) {
         container.innerHTML = '<p class="empty-state">No results to display</p>';
         return;
     }
-    
+
     const html = `
         <div class="card">
             <table class="results-table">
@@ -421,18 +407,18 @@ function renderTableView() {
             </table>
         </div>
     `;
-    
+
     container.innerHTML = html;
 }
 
 function renderCardView() {
     const container = document.getElementById('resultsContainer');
-    
+
     if (analyzedTasks.length === 0) {
         container.innerHTML = '<p class="empty-state">No results to display</p>';
         return;
     }
-    
+
     const html = `
         <div class="results-grid">
             ${analyzedTasks.map((task, index) => `
@@ -468,24 +454,24 @@ function renderCardView() {
             `).join('')}
         </div>
     `;
-    
+
     container.innerHTML = html;
 }
 
 function renderDependencyGraph() {
     const container = document.getElementById('graphContainer');
     container.style.display = 'block';
-    
+
     const canvas = document.getElementById('dependencyGraph');
     const ctx = canvas.getContext('2d');
-    
+
     // Set canvas size
     canvas.width = container.clientWidth - 40;
     canvas.height = Math.max(500, analyzedTasks.length * 80);
-    
+
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
+
     if (analyzedTasks.length === 0) {
         ctx.fillStyle = '#7a7a9d';
         ctx.font = '16px Inter';
@@ -493,22 +479,22 @@ function renderDependencyGraph() {
         ctx.fillText('No tasks to display', canvas.width / 2, canvas.height / 2);
         return;
     }
-    
+
     // Calculate node positions
     const nodeRadius = 30;
     const padding = 80;
     const nodes = [];
-    
+
     analyzedTasks.forEach((task, index) => {
         const x = padding + (index % 3) * ((canvas.width - 2 * padding) / 2);
         const y = padding + Math.floor(index / 3) * 120;
         nodes.push({ task, x, y });
     });
-    
+
     // Draw edges (dependencies)
     ctx.strokeStyle = 'rgba(102, 126, 234, 0.5)';
     ctx.lineWidth = 2;
-    
+
     nodes.forEach(node => {
         const deps = node.task.dependencies || [];
         deps.forEach(depId => {
@@ -518,11 +504,11 @@ function renderDependencyGraph() {
             }
         });
     });
-    
+
     // Draw nodes
     nodes.forEach(node => {
         const priorityColor = getPriorityColor(node.task.priority_level);
-        
+
         // Draw circle
         ctx.beginPath();
         ctx.arc(node.x, node.y, nodeRadius, 0, 2 * Math.PI);
@@ -531,14 +517,14 @@ function renderDependencyGraph() {
         ctx.strokeStyle = '#ffffff';
         ctx.lineWidth = 3;
         ctx.stroke();
-        
+
         // Draw score
         ctx.fillStyle = '#ffffff';
         ctx.font = 'bold 16px Inter';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(node.task.priority_score.toFixed(1), node.x, node.y);
-        
+
         // Draw title
         ctx.fillStyle = '#ffffff';
         ctx.font = '12px Inter';
@@ -549,22 +535,22 @@ function renderDependencyGraph() {
 function renderEisenhowerMatrix() {
     const container = document.getElementById('matrixContainer');
     container.style.display = 'block';
-    
+
     // Clear quadrants
     for (let i = 1; i <= 4; i++) {
         document.getElementById(`quadrant${i}`).innerHTML = '';
     }
-    
+
     if (analyzedTasks.length === 0) {
         document.getElementById('quadrant1').innerHTML = '<p style="color: var(--text-muted);">No tasks</p>';
         return;
     }
-    
+
     // Categorize tasks into quadrants
     analyzedTasks.forEach(task => {
         const urgencyScore = task.score_breakdown?.urgency || 5;
         const importanceScore = task.score_breakdown?.importance || 5;
-        
+
         let quadrant;
         if (urgencyScore >= 6 && importanceScore >= 6) {
             quadrant = 1; // Urgent & Important
@@ -575,7 +561,7 @@ function renderEisenhowerMatrix() {
         } else {
             quadrant = 4; // Neither
         }
-        
+
         const quadrantEl = document.getElementById(`quadrant${quadrant}`);
         const taskItem = document.createElement('div');
         taskItem.className = 'quadrant-task-item';
@@ -587,26 +573,26 @@ function renderEisenhowerMatrix() {
     });
 }
 
-// ========================================
+
 // HELPER FUNCTIONS
-// ========================================
+
 
 function drawArrow(ctx, fromX, fromY, toX, toY) {
     const headLength = 10;
     const angle = Math.atan2(toY - fromY, toX - fromX);
-    
+
     // Adjust start and end points to be at edge of circles
     const nodeRadius = 30;
     const startX = fromX + nodeRadius * Math.cos(angle);
     const startY = fromY + nodeRadius * Math.sin(angle);
     const endX = toX - nodeRadius * Math.cos(angle);
     const endY = toY - nodeRadius * Math.sin(angle);
-    
+
     ctx.beginPath();
     ctx.moveTo(startX, startY);
     ctx.lineTo(endX, endY);
     ctx.stroke();
-    
+
     // Draw arrowhead
     ctx.beginPath();
     ctx.moveTo(endX, endY);
@@ -639,7 +625,7 @@ function formatDate(dateStr) {
     const date = new Date(dateStr);
     const today = new Date();
     const diffDays = Math.ceil((date - today) / (1000 * 60 * 60 * 24));
-    
+
     if (diffDays < 0) {
         return `${dateStr} (${Math.abs(diffDays)}d overdue)`;
     } else if (diffDays === 0) {
@@ -663,7 +649,7 @@ function hideLoading() {
 function showWarnings(warnings) {
     const container = document.getElementById('warningsContainer');
     container.style.display = 'block';
-    
+
     container.innerHTML = warnings.map(warning => {
         let content = `<strong>${warning.message || warning.type}</strong>`;
         if (warning.details) {
@@ -673,7 +659,7 @@ function showWarnings(warnings) {
                 content += `<div>${warning.details}</div>`;
             }
         }
-        
+
         const className = warning.type === 'circular_dependency' ? 'warning-item' : 'warning-item info';
         return `<div class="${className}">${content}</div>`;
     }).join('');
@@ -687,7 +673,7 @@ function hideWarnings() {
 function showToast(message, type = 'info') {
     // Simple alert for now - can be enhanced with a toast library
     console.log(`[${type.toUpperCase()}] ${message}`);
-    
+
     // Show in UI (simple implementation)
     const toast = document.createElement('div');
     toast.style.cssText = `
@@ -706,16 +692,16 @@ function showToast(message, type = 'info') {
     `;
     toast.textContent = message;
     document.body.appendChild(toast);
-    
+
     setTimeout(() => {
         toast.style.animation = 'fadeOut 0.3s ease';
         setTimeout(() => toast.remove(), 300);
     }, 3000);
 }
 
-// ========================================
+
 // LOCAL STORAGE
-// ========================================
+
 
 function saveTasksToStorage() {
     try {
